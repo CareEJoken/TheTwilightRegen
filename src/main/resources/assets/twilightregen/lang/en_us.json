@@ -1,0 +1,11 @@
+{
+  "entity.twilightregen.boss_respawn_marker": "Boss Respawn Countdown",
+  "twilightregen.boss_respawn.countdown": "%s returns in %s",
+  "twilightregen.boss_respawn.ready": "%s is about to return",
+  "config.twilightregen.bossRespawnEnabled": "Boss Respawn",
+  "config.twilightregen.bossRespawnEnabled.tooltip": "Whether defeated Twilight Forest bosses schedule a respawn: once the countdown ends, the spawner block is restored in place and the structure's conquered mark is cleared (the map X disappears). When disabled, vanilla Twilight Forest behaviour is kept (bosses never respawn).",
+  "config.twilightregen.bossRespawnDelaySeconds": "Respawn Delay (Seconds)",
+  "config.twilightregen.bossRespawnDelaySeconds.tooltip": "Delay in seconds (in-game time) between a boss's death and its spawner being restored. 300 = 5 minutes. The countdown is only resolved while the chunk is loaded; it never force-loads chunks.",
+  "config.twilightregen.bossRespawnMarkerBreakable": "Breakable Countdown",
+  "config.twilightregen.bossRespawnMarkerBreakable.tooltip": "Whether the respawn countdown text can be destroyed by attacking it. Breaking it permanently cancels that respawn: the spawner is never restored and the structure stays conquered (the map X is kept). When disabled, the countdown cannot be interrupted."
+}

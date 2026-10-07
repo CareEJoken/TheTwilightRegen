@@ -1,0 +1,53 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.moddev' version "${mdg_version}"
+}
+
+group = project.group_name
+version = project.mod_version
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+neoForge {
+    version = project.neo_version
+
+    // 校验 META-INF/accesstransformer.cfg 里的条目（写错/过期会在构建期报错，而不是运行期炸）
+    validateAccessTransformers = true
+
+    parchment {
+        minecraftVersion = '1.21.1'
+        mappingsVersion = '2024.11.17'
+    }
+
+    runs {
+        client {
+            client()
+        }
+    }
+
+    mods {
+        twilightregen {
+            sourceSet(sourceSets.main)
+        }
+    }
+}
+
+dependencies {
+    // TF slim jar 用于编译（包含所有 TF 类，但不含 shaded beanification）
+    compileOnly files('../twilightforest/build/libs/twilightforest-1.21.1-4.8-slim.jar')
+    // 运行时加载 TF universal jar（含 shaded beanification）
+    runtimeOnly files('../twilightforest/build/libs/twilightforest-1.21.1-4.8-universal.jar')
+}
+
+// 将 LICENSE 打包进 jar（mods.toml 声明 MIT，jar 内应带许可证文件，CF 惯例）
+jar {
+    from rootProject.file('LICENSE')
+    // mods.toml 的 ${file.jarVersion} 占位符从 jar manifest 读取；缺失时游戏内显示 "0.0NONE"
+    manifest {
+        attributes 'Implementation-Version': project.version
+    }
+}

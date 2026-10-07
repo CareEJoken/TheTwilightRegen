@@ -1,0 +1,40 @@
+modLoader = "javafml"
+loaderVersion = "[4,)"
+license = "MIT"
+
+[[mods]]
+    modId = "twilightregen"
+    version = "${file.jarVersion}"
+    displayName = "The Twilight Regen"
+    authors = ["CareEJoken"]
+    description = '''
+A Twilight Forest addon: defeating a boss starts a respawn countdown above its spawner; once it ends the spawner block is restored in place and the structure becomes un-conquered again (the magic map X disappears). Fully configurable, resolves on chunk load without force-loading chunks.
+
+暮色森林附属模组：击败 Boss 后，其刷怪笼上方开始重生倒计时；倒计时结束刷怪笼回归原位，结构恢复“未征服”状态（魔法地图叉号消失）。延迟时间可在配置中调整，结算不会强制加载区块。
+'''
+    credits = "Built on Twilight Forest by Team Twilight, licensed under LGPLv3 (see LICENSE)."
+    logoFile = "twilightregen_logo.png"
+
+[[mixins]]
+    config = "twilightregen.mixins.json"
+
+[[dependencies.twilightregen]]
+    modId = "neoforge"
+    type = "required"
+    versionRange = "[21.1,)"
+    ordering = "NONE"
+    side = "BOTH"
+
+[[dependencies.twilightregen]]
+    modId = "minecraft"
+    type = "required"
+    versionRange = "[1.21.1,)"
+    ordering = "NONE"
+    side = "BOTH"
+
+[[dependencies.twilightregen]]
+    modId = "twilightforest"
+    type = "required"
+    versionRange = "[4.8,)"
+    ordering = "AFTER"
+    side = "BOTH"
